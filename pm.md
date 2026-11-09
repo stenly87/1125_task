@@ -15,12 +15,10 @@
 ## Подготовительный этап
 
 Перед началом работы необходимо один раз настроить Git, чтобы он знал, кто вы. Откройте Git Bash и выполните команды, заменив данные на свои:
-<details>
-   <summary>Bash</summary>
-   
+```Bash   
       git config --global user.name "Иванов Иван"
       git config --global user.email "ivanov@university.ru"      
-</details>
+```
 
 ---
 
