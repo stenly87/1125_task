@@ -8,16 +8,19 @@
 * Доступ к внутренней сети (адрес сервера: `192.168.200.35:3000`).
 * Выданные преподавателем логин и пароль.
 
+## ! Попробуйте сначала вспомнить нужные команды, а потом проверьте себя, развернув Bash-код
+
 ---
 
 ## Подготовительный этап
 
 Перед началом работы необходимо один раз настроить Git, чтобы он знал, кто вы. Откройте Git Bash и выполните команды, заменив данные на свои:
-
-```bash
-git config --global user.name "Иванов Иван"
-git config --global user.email "ivanov@university.ru"
-```
+<details>
+   <summary>Bash</summary>
+   
+      git config --global user.name "Иванов Иван"
+      git config --global user.email "ivanov@university.ru"      
+</details>
 
 ---
 
@@ -26,45 +29,52 @@ git config --global user.email "ivanov@university.ru"
 **Задача:** Создать проект с нуля, внести изменения и зафиксировать их в истории.
 
 1. **Создайте папку для проекта и перейдите в нее:**
-   ```bash
-   mkdir my_project
-   cd my_project
-   ```
+   <details>
+      <summary>Bash</summary>
+   
+         mkdir my_project
+         cd my_project   
+   </details>
+2. **Инициализируйте локальный репозиторий:**   
+   <details>
+      <summary>Bash</summary>
+      
+         git init
+   </details>  
 
-2. **Инициализируйте локальный репозиторий:**
-   ```bash
-   git init
-   ```
-   *(Примечание: по умолчанию может создаться ветка `master` или `main`. В современных версиях Git стандартом является `main`. Далее в работе мы будем использовать `master`.)*
-
-3. **Создайте первый файл и добавьте его в индекс:**
-   ```bash
-   echo "Привет, Git!" > readme.txt
-   git status  # Посмотрите статус: файл не отслеживается (untracked)
-   git add readme.txt
-   git status  # Теперь файл в индексе (staged)
-   ```
-
-4. **Сделайте первый коммит (фиксацию):**
-   ```bash
-   git commit -m "Начальный коммит: добавлен readme"
-   ```
-
-5. **Внесите изменения в файл, просмотрите их и зафиксируйте:**
+4. **Создайте первый файл и добавьте его в индекс:**
+   <details>
+      <summary>Bash</summary>
+   
+         echo "Привет, Git!" > readme.txt
+         git status  # Посмотрите статус: файл не отслеживается (untracked)
+         git add readme.txt
+         git status  # Теперь файл в индексе (staged)
+   </details>
+5. **Сделайте первый коммит (фиксацию):**
+   <details>
+      <summary>Bash</summary>
+         
+         git commit -m "Начальный коммит: добавлен readme"
+    </details>
+6. **Внесите изменения в файл, просмотрите их и зафиксируйте:**
    Откройте `readme.txt` и допишите вторую строку: `Это мой первый проект.`
-   ```bash
-   git status  # Файл изменен (modified)
-   git diff    # Посмотрите, что именно изменилось
-   git add readme.txt
-   git commit -m "Добавлено описание проекта"
-   ```
-
-6. **Просмотрите историю коммитов:**
-   ```bash
-   git log
-   # Для более наглядного графического вывода:
-   git log --oneline --graph
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         git status  # Файл изменен (modified)
+         git diff    # Посмотрите, что именно изменилось
+         git add readme.txt
+         git commit -m "Добавлено описание проекта"
+   </details>
+7. **Просмотрите историю коммитов:**
+   <details>
+      <summary>Bash</summary>
+      
+         git log
+         # Для более наглядного графического вывода:
+         git log --oneline --graph
+   </details>
 
 ---
 
@@ -102,14 +112,18 @@ git config --global user.email "ivanov@university.ru"
 Вернитесь в терминал в папку `my_project`.
 
 1. **Добавьте удаленный сервер (origin):**
-   ```bash
-   git remote add origin http://192.168.200.35:3000/<ваш_логин>/lab-git-<ваш_логин>.git
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         git remote add origin http://192.168.200.35:3000/<ваш_логин>/lab-git-<ваш_логин>.git
+   </details>
 
 2. **Отправьте (запушьте) ваши локальные коммиты на сервер:**
-   ```bash
-   git push -u origin master
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         git push -u origin master
+   </details>
    *При первом подключении система попросит ввести логин и пароль от сервера `192.168.200.35:3000`.*
 
 3. **Проверьте связь:**
@@ -123,45 +137,57 @@ git config --global user.email "ivanov@university.ru"
 *Для имитации работы "второго разработчика" создадим еще одну папку на вашем компьютере.*
 
 1. **Склонируйте репозиторий в новую папку (имитация компьютера коллеги):**
-   ```bash
-   cd ..
-   git clone http://192.168.200.35:3000/<ваш_логин>/lab-git-<ваш_логин>.git colleague_workspace
-   cd colleague_workspace
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         cd ..
+         git clone http://192.168.200.35:3000/<ваш_логин>/lab-git-<ваш_логин>.git colleague_workspace
+         cd colleague_workspace
+   </details>
 
-2. **Внесите изменения от имени "коллеги":**
+2. **Внесите изменения от имени "коллеги" и залейте в удаленный репозиторий:**
    Откройте `readme.txt` в папке `colleague_workspace` и измените первую строку на: `Привет, Git! Это изменил коллега.`
-   ```bash
-   git add readme.txt
-   git commit -m "Изменение от коллеги"
-   git push
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         git add readme.txt
+         git commit -m "Изменение от коллеги"
+         git push
+   </details>
 
 3. **Вернитесь в свою основную рабочую папку:**
-   ```bash
-   cd ../my_project
-   ```
+   <details>
+      <summary>Bash</summary>
+         
+         cd ../my_project
+   </details>
 
-4. **Внесите изменения в ТОТ ЖЕ самый файл от "своего" имени:**
+5. **Внесите изменения в ТОТ ЖЕ самый файл от "своего" имени:**
    Откройте `readme.txt` в `my_project` и измените первую строку на: `Привет, Git! Это изменил я.`
-   ```bash
-   git add readme.txt
-   git commit -m "Мое изменение"
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         git add readme.txt
+         git commit -m "Мое изменение"
+   </details>
 
-5. **Попробуйте отправить изменения на сервер:**
-   ```bash
-   git push
-   ```
+6. **Попробуйте отправить изменения на сервер:**
+   <details>
+      <summary>Bash</summary>
+         
+         git push
+   </details>
    *Сервер отклонит push, так как на сервере есть изменения, которых нет у вас локально.*
 
-6. **Получите изменения с сервера (возникнет конфликт):**
-   ```bash
-   git pull
-   ```
+7. **Получите изменения с сервера (возникнет конфликт):**
+   <details>
+      <summary>Bash</summary>
+   
+         git pull
+   </details>
    Git выдаст ошибку: `CONFLICT (content): Merge conflict in readme.txt`.
 
-7. **Разрешите конфликт:**
+8. **Разрешите конфликт:**
    Откройте файл `readme.txt` в любом текстовом редакторе. Вы увидите служебные метки Git:
    ```text
    <<<<<<< HEAD
@@ -172,12 +198,14 @@ git config --global user.email "ivanov@university.ru"
    ```
    **Ваша задача:** удалить эти служебные метки (`<<<`, `===`, `>>>`) и оставить в файле тот текст, который вы считаете правильным (или объединить их). Сохраните файл.
 
-8. **Завершите слияние:**
-   ```bash
-   git add readme.txt
-   git commit -m "Разрешен конфликт слияния"
-   git push
-   ```
+9. **Завершите слияние:**
+   <details>
+      <summary>Bash</summary>
+      
+         git add readme.txt
+         git commit -m "Разрешен конфликт слияния"
+         git push
+   </details>
 
 ---
 
@@ -185,23 +213,29 @@ git config --global user.email "ivanov@university.ru"
 
 **Задача:** Освоить создание feature-веток и механизм ревью кода через веб-интерфейс.
 
-1. **Создайте новую ветку и переключитесь на нее:**
-   ```bash
-   git checkout -b feature/new-text
-   # (или git switch -c feature/new-text в новых версиях Git)
-   ```
+1. **Создайте новую ветку (`feature/new-text`) и переключитесь на нее:**
+   <details>
+      <summary>Bash</summary>
+      
+         git checkout -b feature/new-text
+         # (или git switch -c feature/new-text в новых версиях Git)
+   </details>
 
 2. **Создайте новый файл и сделайте коммит:**
-   ```bash
-   echo "Новый функционал" > feature.txt
-   git add feature.txt
-   git commit -m "Добавлен новый функционал"
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         echo "Новый функционал" > feature.txt
+         git add feature.txt
+         git commit -m "Добавлен новый функционал"
+   </details>
 
 3. **Отправьте ветку на удаленный сервер:**
-   ```bash
-   git push origin feature/new-text
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         git push origin feature/new-text
+   </details>
 
 4. **Создание Pull Request в веб-интерфейсе:**
    * Зайдите на страницу вашего репозитория на сервере `192.168.200.35:3000`.
@@ -212,10 +246,12 @@ git config --global user.email "ivanov@university.ru"
 
 5. **Синхронизируйте локальную основную ветку:**
    Вернитесь в терминал, переключитесь на главную ветку и скачайте обновления:
-   ```bash
-   git checkout master
-   git pull
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         git checkout master
+         git pull
+   </details>
 
 ---
 
@@ -235,28 +271,36 @@ git config --global user.email "ivanov@university.ru"
 ### Шаг 5.2. Клонирование форка и внесение изменений (делает Студент А)
 
 1. **Студент А** клонирует **свой форк** на локальный компьютер:
-   ```bash
-   cd ..
-   git clone http://192.168.200.35:3000/<логин_А>/lab-git-<логин_Б>.git
-   cd lab-git-<логин_Б>
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         cd ..
+         git clone http://192.168.200.35:3000/<логин_А>/lab-git-<логин_Б>.git
+         cd lab-git-<логин_Б>
+   </details>
 
-2. Создаёт новую ветку для своего вклада:
-   ```bash
-   git checkout -b feature/contribution
-   ```
+2. Создаёт новую ветку (`feature/contribution_(ИмяЮзера)`) для своего вклада:
+   <details>
+      <summary>Bash</summary>
+      
+         git checkout -b feature/contribution_(ИмяЮзера)
+     </details>
 
 3. Вносит изменения. Например, создаёт новый файл `contributor.txt`:
-   ```bash
-   echo "Вклад в проект от Студента А" > contributor.txt
-   git add contributor.txt
-   git commit -m "Добавлен файл contributor.txt"
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         echo "Вклад в проект от Студента А" > contributor.txt
+         git add contributor.txt
+         git commit -m "Добавлен файл contributor.txt"
+     </details>
 
 4. Отправляет ветку в **свой форк** на сервер:
-   ```bash
-   git push origin feature/contribution
-   ```
+   <details>
+      <summary>Bash</summary>
+         
+         git push origin feature/contribution_(ИмяЮзера)
+     </details>
 
 ### Шаг 5.3. Создание Pull Request из форка (делает Студент А)
 
@@ -276,19 +320,28 @@ git config --global user.email "ivanov@university.ru"
 ### Шаг 5.5. Синхронизация локальных репозиториев (делают оба студента)
 
 1. **Студент Б** подтягивает изменения в свой локальный репозиторий:
-   ```bash
-   git pull origin master
-   ```
+   <details>
+      <summary>Bash</summary>
+      
+         git pull origin master
+     </details>
    Теперь в его репозитории появился файл `contributor.txt`.
 
 2. **Студент А** синхронизирует свой форк с оригинальным репозиторием, чтобы в будущем избежать расхождений:
    * В веб-интерфейсе Gogs нет автоматической синхронизации, в отличие от гитхаба, поэтому нужно обновить локальный репозиторий из оригинального и потом обновить свой репозиторий:
-   ```bash
-   git remote add upstream http://192.168.200.35:3000/<логин_Б>/lab-git-<логин_Б>.git
-   git fetch upstream
-   git checkout master
-   git merge upstream/master
-   git push origin master
-   ```
+   1. Добавляем оригинальный удаленный репозиторий в наш локальный (называем, например, `upstream`)
+   2. Выполняем фетч (обновление) из добавленного репозитория
+   3. Переключаемся на основную локальный ветку (`master`)
+   4. Сливаем наш мастер с удаленным мастером `upstream/master`
+   5. Заливаем изменения в наш основной удаленный репозиторий
+   <details>
+      <summary>Bash</summary>
+      
+         git remote add upstream http://192.168.200.35:3000/<логин_Б>/lab-git-<логин_Б>.git
+         git fetch upstream
+         git checkout master
+         git merge upstream/master
+         git push origin master
+     </details>
 
 ---
